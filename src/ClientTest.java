@@ -3,7 +3,6 @@ import java.net.*;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class ClientTest {
@@ -13,7 +12,6 @@ public class ClientTest {
             System.out.println("Connected");
             while(true) {
                 try {
-                    Scanner sc = new Scanner(System.in);
                     OutputStream outputStream = socket.getOutputStream();
                     DataOutputStream dos = new DataOutputStream(outputStream);
                     String a = JOptionPane.showInputDialog("이름을 입력해주세요!");
