@@ -14,6 +14,9 @@ public class testing extends JFrame implements ActionListener{
     private static DataOutputStream dos;
     JButton bt1;
     JTextField tx1;
+    JTextArea textHistory;
+    JTextField textMessage,textAddress;
+    JButton btnConnect;
     public testing() {
         super("JFrame 테스트 중");//상위 클래스의 생성자를 호출하여 윈도우 제목 설정
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
