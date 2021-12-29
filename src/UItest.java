@@ -2,8 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.net.*;
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -11,6 +9,7 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class UItest extends JFrame implements ActionListener{
+    public static boolean inputCheck = false;
     JButton btnStart; //보내기버튼
     JButton btnStop; //종료버튼
     JTextField tfName; //메세지 입력창
@@ -18,7 +17,6 @@ public class UItest extends JFrame implements ActionListener{
     private static Socket socket;
     private static OutputStream outputStream;
     private static DataOutputStream dos;
-    boolean temp = false;
 
     public UItest() { //UI 제작
         taMessage = new JTextArea();
@@ -67,37 +65,66 @@ public class UItest extends JFrame implements ActionListener{
         new UItest();
     }
     public void actionPerformed(ActionEvent e) {
-        String name = tfName.getText();
+        String name = tfName.getText(); // name 전달방식 수정 필요
+        Timer tm = new Timer();
+        String m = "";
 
         if(e.getSource() == btnStop) {
             System.exit(0);
         }
         else if(e.getSource() == btnStart) {
-            if(name.equals("계속")) {
-                setVisible(false);
-                try {
-                    TimeUnit.SECONDS.sleep(3);
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
+            while(true) {
+                if(tm.isAlive()) {
+                    tm.interrupt();
                 }
-                setVisible(true);
-            }
-            else {
-                temp = true;
-                taMessage.append(name+"\n");
-                setVisible(false);
-                try {
-                    TimeUnit.SECONDS.sleep(3);
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
+                taMessage.append(name + "\n"); //name 수정 필요
+                inputCheck = false;
+                tm = new Timer();
+                setVisible(false); //안보이게 수정
+
+                try{
+                    TimeUnit.SECONDS.sleep(3); //공부시간
+                } catch (InterruptedException ee) {
+                    ee.getStackTrace();
                 }
-                setVisible(true);
+                setVisible(true); //다시 보이게
+
+                tm.start(); //타이머 시작
+                do {
+                    m =JOptionPane.showInputDialog(null,"계속 수업을 진행하려면 \"계속\"을 입력해주세요", "시간 만료", JOptionPane.INFORMATION_MESSAGE);
+                } while(!m.equals("계속"));
+
+                inputCheck = true;
             }
+        }
+    }
+    class Timer extends Thread{
+        @Override
+        public void run() {
+            for(int i=10; i>=1; i--){
+                if(UItest.inputCheck==true){
+                    return;
+                }
+                System.out.println(i);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+            /*
+            try {
+                socket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+             */ //서버 연결시 사용
+            System.exit(0);
         }
     }
 
 
-    static String getTime() {
+    static String getTime() { //시간 가공을 위해
         SimpleDateFormat f = new SimpleDateFormat("hh:mm:ss");
         return f.format(new Date());
     }
