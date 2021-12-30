@@ -19,6 +19,7 @@ public class ClientTest extends JFrame implements ActionListener{
     private static DataOutputStream dos;
 
     public ClientTest() { //UI 제작
+        setTitle("사용기록 체크기");
         taMessage = new JTextArea();
         taMessage.setFont(new Font("맑은 고딕",Font.BOLD,15));
         taMessage.setEditable(false);
