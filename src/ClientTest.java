@@ -103,11 +103,21 @@ public class ClientTest extends JFrame implements ActionListener{
                 setVisible(true); //다시 보이게
 
                 tm.start(); //타이머 시작
+                /*
                 do {
                     m =JOptionPane.showInputDialog(null,"계속 수업을 진행하려면 \"계속\"을 입력해주세요\n" + "수업을 그만하려면 \"퇴장\"을 입력해주세요", "시간 만료", JOptionPane.INFORMATION_MESSAGE);
                 } while(!m.equals("계속") && !m.equals("퇴장"));
 
                 if(m.equals("계속")) {
+                    inputCheck = true;
+                }
+                else {
+                }
+
+                 */
+                int result = JOptionPane.showConfirmDialog(null, "계속?", "제목", JOptionPane.YES_NO_OPTION);
+
+                if(result == JOptionPane.YES_OPTION) {
                     inputCheck = true;
                 }
                 else {

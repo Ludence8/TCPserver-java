@@ -92,7 +92,7 @@ public class c2 extends JFrame implements Runnable, ActionListener {
                 else {
                     System.out.println(data+ " => 입장");
                     pw.write(data+ " => 입장\n");
-                    taMessage.append(num1+"번 사용시작\n");
+                    taMessage.append(data+" 사용시작\n");
                     name = data.split(" ")[1];
                     pw.flush();
                     pw.close();
