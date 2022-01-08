@@ -14,6 +14,7 @@ public class ClientTest extends JFrame implements ActionListener{
     JButton btnStop; //종료버튼
     JTextField tfName; //메세지 입력창
     JTextArea taMessage; //메세지 출력화면
+    static String name;
     private static Socket socket;
     private static OutputStream outputStream;
     private static DataOutputStream dos;
@@ -30,13 +31,12 @@ public class ClientTest extends JFrame implements ActionListener{
         bottom.setLayout(new BorderLayout());
         tfName = new JTextField();
 
-        btnStart = new JButton("보내기");
+        btnStart = new JButton("시작");
         btnStop = new JButton("종료");
         btnStop.addActionListener(this);
         btnStart.addActionListener(this);
 
-        bottom.add("Center",tfName);
-        bottom.add("East",btnStart);
+        bottom.add("Center",btnStart);
 
         Container c = this.getContentPane();
         c.add("Center", scroll);
@@ -44,6 +44,7 @@ public class ClientTest extends JFrame implements ActionListener{
         bottom.add("South",btnStop);
         //윈도우 창 설정
         setBounds(300,300,300,300);
+        taMessage.append(name+"님, 안녕하세요\n"+"입장시간 : " + "["+getTime()+"]\n");
         setVisible(true);
 
     }
@@ -63,29 +64,25 @@ public class ClientTest extends JFrame implements ActionListener{
             e.printStackTrace();
             System.exit(0);
         } //서버를 킬 경우 주석 삭제
+        name =JOptionPane.showInputDialog(null,"이름을 입력해주세요!", "이름을 입력해주세요!", JOptionPane.INFORMATION_MESSAGE);
+
         new ClientTest();
     }
     public void actionPerformed(ActionEvent e) {
-        String name = tfName.getText(); // name 전달방식 수정 필요
         String line = "["+getTime()+"] "+name;
-        taMessage.append(name+"님, 안녕하세요\n"+"입장시간 : " + "["+getTime()+"]\n");
-        try {
-            dos.writeUTF(line);
-        } catch (IOException ee) {
-            ee.getStackTrace();
-        }
+
         Timer tm = new Timer();
         String m = "";
 
         if(e.getSource() == btnStop) {
-            try {
-                socket.close();
-            } catch (IOException ee) {
-                ee.printStackTrace();
-            }
             System.exit(0);
         }
         else if(e.getSource() == btnStart) {
+            try {
+                dos.writeUTF(line);
+            } catch (IOException ee) {
+                ee.getStackTrace();
+            }
             while(true) {
                 if(tm.isAlive()) {
                     tm.interrupt();
@@ -115,7 +112,7 @@ public class ClientTest extends JFrame implements ActionListener{
                 }
 
                  */
-                int result = JOptionPane.showConfirmDialog(null, "계속?", "제목", JOptionPane.YES_NO_OPTION);
+                int result = JOptionPane.showConfirmDialog(null, "계속 하시겠습니까?\nn초 안에 입력해주세요!", "시간 만료", JOptionPane.YES_NO_OPTION);
 
                 if(result == JOptionPane.YES_OPTION) {
                     inputCheck = true;
@@ -142,7 +139,7 @@ public class ClientTest extends JFrame implements ActionListener{
             }
 
             try {
-                dos.writeUTF("bye "+"[" +  getTime() + "]");
+                dos.writeUTF("bye "+"[" +  getTime() + "] " + name);
                 socket.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -153,7 +150,7 @@ public class ClientTest extends JFrame implements ActionListener{
 
 
     static String getTime() { //시간 가공을 위해
-        SimpleDateFormat f = new SimpleDateFormat("hh:mm:ss");
+        SimpleDateFormat f = new SimpleDateFormat("kk:mm:ss");
         return f.format(new Date());
     }
 }

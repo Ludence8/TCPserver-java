@@ -85,7 +85,7 @@ public class c2 extends JFrame implements Runnable, ActionListener {
                 if(data.split(" ")[0].equals("bye")) {
                     System.out.println(data.split(" ")[1]+" " +name + " => 퇴장");
                     pw.write(data.split(" ")[1]+" " +name + " => 퇴장\n");
-                    taMessage.append(num1+"번 사용종료\n");
+                    taMessage.append(data.split(" ")[1] + " " + data.split(" ")[2]+" 사용종료\n");
                     pw.flush();
                     pw.close();
                 }
