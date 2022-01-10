@@ -2,13 +2,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.net.*;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class ClientTest extends JFrame implements ActionListener{
+public class Client extends JFrame implements ActionListener{
     public static boolean inputCheck = false;
     JButton btnStart; //보내기버튼
     JButton btnStop; //종료버튼
@@ -19,7 +21,7 @@ public class ClientTest extends JFrame implements ActionListener{
     private static OutputStream outputStream;
     private static DataOutputStream dos;
 
-    public ClientTest() { //UI 제작
+    public Client() { //UI 제작
         setTitle("사용기록 체크기");
         taMessage = new JTextArea();
         taMessage.setFont(new Font("맑은 고딕",Font.BOLD,15));
@@ -44,9 +46,14 @@ public class ClientTest extends JFrame implements ActionListener{
         bottom.add("South",btnStop);
         //윈도우 창 설정
         setBounds(300,300,300,300);
+
         taMessage.append(name+"님, 안녕하세요\n"+"입장시간 : " + "["+getTime()+"]\n");
         setVisible(true);
-
+        this.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
     }
 
     public static void main(String[] args) {
@@ -66,7 +73,7 @@ public class ClientTest extends JFrame implements ActionListener{
         } //서버를 킬 경우 주석 삭제
         name =JOptionPane.showInputDialog(null,"이름을 입력해주세요!", "이름을 입력해주세요!", JOptionPane.INFORMATION_MESSAGE);
 
-        new ClientTest();
+        new Client();
     }
     public void actionPerformed(ActionEvent e) {
         String line = "["+getTime()+"] "+name;
@@ -104,13 +111,11 @@ public class ClientTest extends JFrame implements ActionListener{
                 do {
                     m =JOptionPane.showInputDialog(null,"계속 수업을 진행하려면 \"계속\"을 입력해주세요\n" + "수업을 그만하려면 \"퇴장\"을 입력해주세요", "시간 만료", JOptionPane.INFORMATION_MESSAGE);
                 } while(!m.equals("계속") && !m.equals("퇴장"));
-
                 if(m.equals("계속")) {
                     inputCheck = true;
                 }
                 else {
                 }
-
                  */
                 int result = JOptionPane.showConfirmDialog(null, "계속 하시겠습니까?\nn초 안에 입력해주세요!", "시간 만료", JOptionPane.YES_NO_OPTION);
 
@@ -127,7 +132,7 @@ public class ClientTest extends JFrame implements ActionListener{
         @Override
         public void run() {
             for(int i=10; i>=1; i--){
-                if(ClientTest.inputCheck==true){
+                if(Client.inputCheck==true){
                     return;
                 }
                 System.out.println(i);

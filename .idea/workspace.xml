@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9051661c-433e-437e-92d1-5cc330ef3f4f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/out/production/TCPserver/c2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPserver/c2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/c2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/c2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCPserver/ClientTest$Timer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCPserver/ClientTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCPserver/c2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ServerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/c2.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/testnum.txt" beforeDir="false" afterPath="$PROJECT_DIR$/testnum.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,9 +51,23 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RunManager" selected="Application.ClientTest">
+  <component name="RunManager" selected="Application.Client">
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Client" />
+      <module name="TCPserver" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ClientTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ClientTest" />
+      <module name="TCPserver" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Server" />
       <module name="TCPserver" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -62,13 +80,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UItest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="UItest" />
-      <module name="TCPserver" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="c2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="c2" />
       <module name="TCPserver" />
@@ -76,20 +87,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="testing" />
-      <module name="TCPserver" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClientTest" />
+        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Server" />
         <item itemvalue="Application.c2" />
+        <item itemvalue="Application.ClientTest" />
         <item itemvalue="Application.ServerTest" />
-        <item itemvalue="Application.UItest" />
-        <item itemvalue="Application.testing" />
       </list>
     </recent_temporary>
   </component>

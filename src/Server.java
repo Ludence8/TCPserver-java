@@ -3,11 +3,13 @@ import java.awt.*;
 import java.awt.desktop.SystemEventListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class c2 extends JFrame implements Runnable, ActionListener {
+public class Server extends JFrame implements Runnable, ActionListener {
     ServerSocket serverSocket;
     Thread[] threadArr;
     JTextArea taMessage; //메세지 출력화면
@@ -16,10 +18,11 @@ public class c2 extends JFrame implements Runnable, ActionListener {
     String name = "";
     int num1 = 0;
     public static void main(String[] args) {
-        c2 server = new c2(15);
+        Server server = new Server(15);
         server.start();
+
     }
-    public c2(int num) {
+    public Server(int num) {
         setTitle("컴퓨터 확인 서버");
         taMessage = new JTextArea();
         taMessage.setFont(new Font("맑은 고딕",Font.BOLD,15));
@@ -39,6 +42,11 @@ public class c2 extends JFrame implements Runnable, ActionListener {
 
         setBounds(300,300,300,300);
         setVisible(true);
+        this.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
         num1 = num;
         try {
             serverSocket = new ServerSocket(7777);
