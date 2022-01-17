@@ -57,7 +57,7 @@ public class Client extends JFrame implements ActionListener{
 
     public static void main(String[] args) {
         try {
-            socket = new Socket("192.168.3.47", 7777);
+            socket = new Socket("localhost", 7777);
             outputStream = socket.getOutputStream();
             dos = new DataOutputStream(outputStream);
             System.out.println("연결되었습니다.");
