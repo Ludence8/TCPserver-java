@@ -16,7 +16,6 @@ public class Client extends JFrame implements ActionListener{
     JButton btnStop; //종료버튼
     JTextField tfName; //메세지 입력창
     JTextArea taMessage; //메세지 출력화면
-    static String name;
     private static Socket socket;
     private static OutputStream outputStream;
     private static DataOutputStream dos;
@@ -47,7 +46,7 @@ public class Client extends JFrame implements ActionListener{
         //윈도우 창 설정
         setBounds(300,300,300,300);
 
-        taMessage.append(name+"님, 안녕하세요\n"+"입장시간 : " + "["+getTime()+"]\n");
+        taMessage.append("오늘도 화이팅!\n"+"입장시간 : " + "["+getTime()+"]\n");
         setVisible(true);
         this.addWindowListener(new WindowAdapter(){
             public void windowClosing(WindowEvent e) {
@@ -58,7 +57,7 @@ public class Client extends JFrame implements ActionListener{
 
     public static void main(String[] args) {
         try {
-            socket = new Socket("localhost", 7777);
+            socket = new Socket("192.168.3.47", 7777);
             outputStream = socket.getOutputStream();
             dos = new DataOutputStream(outputStream);
             System.out.println("연결되었습니다.");
@@ -71,12 +70,10 @@ public class Client extends JFrame implements ActionListener{
             e.printStackTrace();
             System.exit(0);
         } //서버를 킬 경우 주석 삭제
-        name =JOptionPane.showInputDialog(null,"이름을 입력해주세요!", "이름을 입력해주세요!", JOptionPane.INFORMATION_MESSAGE);
-
         new Client();
     }
     public void actionPerformed(ActionEvent e) {
-        String line = "["+getTime()+"] "+name;
+        String line = "a ["+getTime()+"] " + "asdf 1";
 
         Timer tm = new Timer();
         String m = "";
@@ -107,16 +104,6 @@ public class Client extends JFrame implements ActionListener{
                 setVisible(true); //다시 보이게
 
                 tm.start(); //타이머 시작
-                /*
-                do {
-                    m =JOptionPane.showInputDialog(null,"계속 수업을 진행하려면 \"계속\"을 입력해주세요\n" + "수업을 그만하려면 \"퇴장\"을 입력해주세요", "시간 만료", JOptionPane.INFORMATION_MESSAGE);
-                } while(!m.equals("계속") && !m.equals("퇴장"));
-                if(m.equals("계속")) {
-                    inputCheck = true;
-                }
-                else {
-                }
-                 */
                 int result = JOptionPane.showConfirmDialog(null, "계속 하시겠습니까?\nn초 안에 입력해주세요!", "시간 만료", JOptionPane.YES_NO_OPTION);
 
                 if(result == JOptionPane.YES_OPTION) {
@@ -144,7 +131,7 @@ public class Client extends JFrame implements ActionListener{
             }
 
             try {
-                dos.writeUTF("bye "+"[" +  getTime() + "] " + name);
+                dos.writeUTF("bye "+"[" +  getTime() + "] " + "asdf 1");
                 socket.close();
             } catch (IOException e) {
                 e.printStackTrace();

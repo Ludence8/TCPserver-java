@@ -3,12 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="9051661c-433e-437e-92d1-5cc330ef3f4f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPserver/ClientTest$Timer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPserver/ClientTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPserver/c2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ServerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/c2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCPserver/Client$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPserver/Client$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCPserver/Client$Timer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPserver/Client$Timer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCPserver/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPserver/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCPserver/Server$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPserver/Server$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCPserver/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPserver/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testnum.txt" beforeDir="false" afterPath="$PROJECT_DIR$/testnum.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
